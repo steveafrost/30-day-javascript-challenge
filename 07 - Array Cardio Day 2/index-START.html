@@ -13,7 +13,7 @@
       { name: 'Wes', year: 1988 },
       { name: 'Kait', year: 1986 },
       { name: 'Irv', year: 1970 },
-      { name: 'Lux', year: 2015 }
+      { name: 'Lux', year: 2015 },
     ];
 
     const comments = [
@@ -21,21 +21,45 @@
       { text: 'Super good', id: 823423 },
       { text: 'You are the best', id: 2039842 },
       { text: 'Ramen is my fav food ever', id: 123523 },
-      { text: 'Nice Nice Nice!', id: 542328 }
+      { text: 'Nice Nice Nice!', id: 542328 },
     ];
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+    const oneOverNineteen = people.some((person) => {
+      return currentYear - person.year >= 19;
+    });
+
+    console.log(`Is at least one person over 19? ${oneOverNineteen}`);
+
     // Array.prototype.every() // is everyone 19 or older?
+    const allOverNineteen = people.every((person) => {
+      return currentYear - person.year >= 19;
+    });
+
+    console.log(`Are all people over 19? ${allOverNineteen}`);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const findComment = comments.find((comment) => {
+      return comment.id === 823423;
+    });
+
+    console.log(`Found comment 823423: ${findComment.text}`);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    const commentIndex = comments.findIndex((comment) => {
+      return comment.id === 823423;
+    });
 
+    comments.splice(commentIndex, 1);
+    console.log(`Removed comment 823423: ${comments.length} comments remaining`);
   </script>
 </body>
 </html>
