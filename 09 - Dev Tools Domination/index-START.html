@@ -9,37 +9,62 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
+    const p = document.querySelector('p');
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
     function makeGreen() {
-      const p = document.querySelector('p');
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
     }
 
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('Hello I am a %s string!', 'fancy');
 
     // Styled
+    console.log('%c Colored Text!', 'color: blue');
 
     // warning!
+    console.warn('A console warning');
 
     // Error :|
+    console.error('A console error');
 
     // Info
+    console.info('An information blurb');
 
     // Testing
+    console.assert(1 !== 1, '1 equals 1 is true');
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.dir(p); // allows to view the methods
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`); // or groupCollapsed
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
 
   </script>
 </body>
